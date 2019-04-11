@@ -9,7 +9,7 @@ class Contact(models.Model):
     first_name = models.CharField(_("First name"), max_length=255)
     last_name = models.CharField(_("Last name"), max_length=255)
     email = models.EmailField(unique=True)
-    phone = PhoneNumberField(null=True, unique=True)
+    phone = PhoneNumberField(null=True)
     address = models.ForeignKey(
         Address, related_name='adress_contacts',
         on_delete=models.CASCADE, blank=True, null=True)
