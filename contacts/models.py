@@ -9,16 +9,16 @@ class Contact(models.Model):
     first_name = models.CharField(_("First name"), max_length=255)
     last_name = models.CharField(_("Last name"), max_length=255)
     email = models.EmailField(unique=True)
-    phone = PhoneNumberField(null=True)
+    phone = PhoneNumberField(null=True, blank=True)
     address = models.ForeignKey(
         Address, related_name='adress_contacts',
         on_delete=models.CASCADE, blank=True, null=True)
     description = models.TextField(blank=True, null=True)
     assigned_to = models.ManyToManyField(
-        User, related_name='contact_assigned_users')
+        User, related_name='contact_assigned_users', blank=True)
     created_by = models.ForeignKey(
         User, related_name='contact_created_by',
-        on_delete=models.SET_NULL, null=True)
+        on_delete=models.SET_NULL, null=True, blank=True)
     created_on = models.DateTimeField(_("Created on"), auto_now_add=True)
     is_active = models.BooleanField(default=False)
 
