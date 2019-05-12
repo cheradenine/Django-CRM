@@ -114,7 +114,7 @@ class Comment(models.Model):
     comment = models.CharField(max_length=255)
     commented_on = models.DateTimeField(auto_now_add=True)
     commented_by = models.ForeignKey(
-        User, on_delete=models.CASCADE, blank=True, null=True)
+        User, on_delete=models.CASCADE, blank=True, null=True, related_name='crm_commented_by')
     account = models.ForeignKey(
         'accounts.Account', blank=True, null=True,
         related_name="accounts_comments",
